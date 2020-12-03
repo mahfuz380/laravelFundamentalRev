@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return "hi about";
 });
+
+Route::get('/contact', function(){
+    return "hi contact";
+});
+
+Route::get('/post/{id}/{name}', function($id,$name){
+    return "this is post no". $id . " " . $name;
+});
+
