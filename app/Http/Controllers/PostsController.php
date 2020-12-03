@@ -11,9 +11,10 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        return "its working the id is " . $id;
     }
 
     /**
@@ -24,6 +25,7 @@ class PostsController extends Controller
     public function create()
     {
         //
+        return "i am the method create";
     }
 
     /**
@@ -46,6 +48,7 @@ class PostsController extends Controller
     public function show($id)
     {
         //
+        return "this is the show method";
     }
 
     /**
