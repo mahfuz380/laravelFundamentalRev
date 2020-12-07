@@ -142,7 +142,29 @@ use App\Post;
 //     Post::destroy(3);
 // });
 
-Route::get('/softdelete', function(){
+// Route::get('/softdelete', function(){
 
-    Post::find(4)->delete();
+//     Post::find(6)->delete();
+// });
+
+// Route::get('/readsoftdelete', function(){
+//     // $post = Post::find(4);
+//     // return $post;
+
+//     // $post = Post::withTrashed()->where('id',4)->get();
+
+//     // return $post;
+
+//     $post = Post::onlyTrashed()->get();
+
+//     return $post;
+
+// });
+
+// Route::get('/restore', function(){
+//     Post::withTrashed()->where('is_admin', 0)->restore();
+// });
+
+Route::get('/forcedelete', function(){
+    Post::onlyTrashed()->where('is_admin',0)->forcedelete();
 });
