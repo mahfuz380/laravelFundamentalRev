@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,6 +166,44 @@ use App\Post;
 //     Post::withTrashed()->where('is_admin', 0)->restore();
 // });
 
-Route::get('/forcedelete', function(){
-    Post::onlyTrashed()->where('is_admin',0)->forcedelete();
+// Route::get('/forcedelete', function(){
+//     Post::onlyTrashed()->where('is_admin',0)->forcedelete();
+// });
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationship one to one
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/user/{id}/post', function($id){
+
+    return User::find($id)->post->title;
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationship one to one inverse
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/post/{id}/user', function($id){
+
+    return Post::find($id)->user->name;
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationship one to many
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/posts', function(){
+    $user = User::find(1);
+
+    foreach($user->posts as $post){
+        echo $post->title;
+    }
 });
