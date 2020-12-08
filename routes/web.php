@@ -222,3 +222,18 @@ foreach($user->roles as $role){
     echo $role->name;
 }
 });
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent accessing pivet table
+|--------------------------------------------------------------------------
+*/
+
+Route::get('user/pivot', function(){
+    $user = User::find(1);
+
+    foreach($user->roles as $role){
+        echo $role->pivot->created_at;
+    }
+
+});
