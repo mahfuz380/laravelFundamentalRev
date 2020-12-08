@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -206,4 +207,18 @@ Route::get('/posts', function(){
     foreach($user->posts as $post){
         echo $post->title;
     }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationship many to many
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/user/{id}/role',function($id){
+$user = User::find($id);
+
+foreach($user->roles as $role){
+    echo $role->name;
+}
 });
