@@ -247,8 +247,34 @@ Route::get('user/pivot', function(){
 */
 
 Route::get('/user/country', function(){
-    $country = Country::find(2);
-    foreach($country->posts as $post){
-        return $post->title;
-    }
+   $country= Country::find(2);
+   foreach($country->posts as $post){
+       return $post->title;
+   }
 });
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent polymorphic relationship
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/user/photo', function(){
+    $user = User::find(1);
+    
+    foreach($user->photos as $photo){
+        return $photo->path;
+    }
+
+});
+
+Route::get('/post/photo', function(){
+    $post = Post::find(1);
+    
+    foreach($post->photos as $photo){
+        echo $photo->path . "<br>";
+    }
+
+});
+
