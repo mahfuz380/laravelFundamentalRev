@@ -4,6 +4,9 @@ use App\Post;
 use App\User;
 use App\Role;
 use App\Country;
+use App\Photo;
+use App\Video;
+use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -255,7 +258,7 @@ Route::get('/user/country', function(){
 
 /*
 |--------------------------------------------------------------------------
-| Eloquent polymorphic relationship
+| Eloquent polymorphic relationship one to many
 |--------------------------------------------------------------------------
 */
 
@@ -278,3 +281,53 @@ Route::get('/post/photo', function(){
 
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent polymorphic relationship one to many inverse
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/photo/{id}/post', function($id){
+    $photo = Photo::findOrfail($id);
+    return $photo->imageable;
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent polymorphic relationship many to many
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/post/tag',function(){
+$post = Post::find(1);
+
+foreach($post->tags as $tag){
+    echo $tag->name;
+}
+});
+
+
+Route::get('/video/tag',function(){
+    $video = Video::find(1);
+    
+    foreach($video->tags as $tag){
+        echo $tag->name;
+    }
+    });
+
+    /*
+|--------------------------------------------------------------------------
+| Eloquent polymorphic relationship many to many inverse
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/tag/post', function(){
+    $tag = Tag::find(2);
+    foreach($tag->posts as $post){
+        echo $post->title;
+    }
+
+});
