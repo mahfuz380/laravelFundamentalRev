@@ -181,11 +181,11 @@ use App\Tag;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user/{id}/post', function($id){
+// Route::get('/user/{id}/post', function($id){
 
-    return User::find($id)->post->title;
+//     return User::find($id)->post->title;
 
-});
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -324,10 +324,10 @@ Route::get('/video/tag',function(){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/tag/post', function(){
-    $tag = Tag::find(2);
-    foreach($tag->posts as $post){
-        echo $post->title;
-    }
+// Route::get('/tag/post', function(){
+//     $tag = Tag::find(2);
+//     foreach($tag->posts as $post){
+//         echo $post->title;
+//     }
 
-});
+// });
