@@ -19,9 +19,9 @@ use App\Tag;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/about', function () {
 //     return "hi about";
@@ -193,11 +193,11 @@ use App\Tag;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/post/{id}/user', function($id){
+// Route::get('/post/{id}/user', function($id){
 
-    return Post::find($id)->user->name;
+//     return Post::find($id)->user->name;
 
-});
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -205,13 +205,13 @@ Route::get('/post/{id}/user', function($id){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/posts', function(){
-    $user = User::find(1);
+// Route::get('/posts', function(){
+//     $user = User::find(1);
 
-    foreach($user->posts as $post){
-        echo $post->title;
-    }
-});
+//     foreach($user->posts as $post){
+//         echo $post->title;
+//     }
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -219,13 +219,13 @@ Route::get('/posts', function(){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user/{id}/role',function($id){
-$user = User::find($id);
+// Route::get('/user/{id}/role',function($id){
+// $user = User::find($id);
 
-foreach($user->roles as $role){
-    echo $role->name;
-}
-});
+// foreach($user->roles as $role){
+//     echo $role->name;
+// }
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -233,14 +233,14 @@ foreach($user->roles as $role){
 |--------------------------------------------------------------------------
 */
 
-Route::get('user/pivot', function(){
-    $user = User::find(1);
+// Route::get('user/pivot', function(){
+//     $user = User::find(1);
 
-    foreach($user->roles as $role){
-        echo $role->pivot->created_at;
-    }
+//     foreach($user->roles as $role){
+//         echo $role->pivot->created_at;
+//     }
 
-});
+// });
 
 
 /*
@@ -249,12 +249,12 @@ Route::get('user/pivot', function(){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user/country', function(){
-   $country= Country::find(2);
-   foreach($country->posts as $post){
-       return $post->title;
-   }
-});
+// Route::get('/user/country', function(){
+//    $country= Country::find(2);
+//    foreach($country->posts as $post){
+//        return $post->title;
+//    }
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -263,23 +263,23 @@ Route::get('/user/country', function(){
 */
 
 
-Route::get('/user/photo', function(){
-    $user = User::find(1);
+// Route::get('/user/photo', function(){
+//     $user = User::find(1);
     
-    foreach($user->photos as $photo){
-        return $photo->path;
-    }
+//     foreach($user->photos as $photo){
+//         return $photo->path;
+//     }
 
-});
+// });
 
-Route::get('/post/photo', function(){
-    $post = Post::find(1);
+// Route::get('/post/photo', function(){
+//     $post = Post::find(1);
     
-    foreach($post->photos as $photo){
-        echo $photo->path . "<br>";
-    }
+//     foreach($post->photos as $photo){
+//         echo $photo->path . "<br>";
+//     }
 
-});
+// });
 
 
 /*
@@ -289,11 +289,11 @@ Route::get('/post/photo', function(){
 */
 
 
-Route::get('/photo/{id}/post', function($id){
-    $photo = Photo::findOrfail($id);
-    return $photo->imageable;
+// Route::get('/photo/{id}/post', function($id){
+//     $photo = Photo::findOrfail($id);
+//     return $photo->imageable;
 
-});
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -301,22 +301,22 @@ Route::get('/photo/{id}/post', function($id){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/post/tag',function(){
-$post = Post::find(1);
+// Route::get('/post/tag',function(){
+// $post = Post::find(1);
 
-foreach($post->tags as $tag){
-    echo $tag->name;
-}
-});
+// foreach($post->tags as $tag){
+//     echo $tag->name;
+// }
+// });
 
 
-Route::get('/video/tag',function(){
-    $video = Video::find(1);
+// Route::get('/video/tag',function(){
+//     $video = Video::find(1);
     
-    foreach($video->tags as $tag){
-        echo $tag->name;
-    }
-    });
+//     foreach($video->tags as $tag){
+//         echo $tag->name;
+//     }
+//     });
 
     /*
 |--------------------------------------------------------------------------
@@ -331,3 +331,12 @@ Route::get('/video/tag',function(){
 //     }
 
 // });
+
+    /*
+|--------------------------------------------------------------------------
+| CRUD Form Validation
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('/posts', 'PostsController');
+
