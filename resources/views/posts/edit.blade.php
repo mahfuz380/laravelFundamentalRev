@@ -16,7 +16,7 @@
 
 <form method="post" action="/posts/{{$post->id}}">
 
-{{ csrf_field() }
+{{ csrf_field() }}
 
 <input type="hidden" name="_method" value="DELETE">
 
