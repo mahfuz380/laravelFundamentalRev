@@ -42,9 +42,10 @@ class PostsController extends Controller
         // return $request->all();
 
 
-        Post::create($request->all());
+        //Post::create($request->all());
 
-        return redirect('/posts');
+        //return redirect('/posts');
+        return $request->title;
 
         // $input = $request->all();
         // $input['title'] = $request->title;
