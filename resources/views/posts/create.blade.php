@@ -5,13 +5,20 @@
 
 <h1>Create post</h1>
 
-<form method ="post" action="/posts">
+<!-- <form method ="post" action="/posts"> -->
 
-    {{ csrf_field() }}
+{!! Form::open() !!}
 
-    <input type="text" name="title" placeholder="enter title">
-    <input type="submit" name="submit">
-</form>
+
+{{ csrf_field() }}
+
+<input type="text" name="title" placeholder="enter title">
+<input type="submit" name="submit">
+
+{!! Form::close() !!}
+
+    
+<!-- </form> -->
 
 
 @endsection
