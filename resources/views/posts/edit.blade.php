@@ -17,15 +17,15 @@
 {!! Form::submit('Update Post', ['class'=>'btn btn-info']) !!}
 {!! Form::close() !!}
 
-<form method="post" action="/posts/{{$post->id}}">
+{!! Form::open(['method'=>'DELETE', 'action'=>['PostsController@destroy',$post->id]]) !!}
 
 {{ csrf_field() }}
 
-<input type="hidden" name="_method" value="DELETE">
 
-<input type="submit" value="DELETE">
 
-</form>
+{!! Form::submit('Delete Post', ['class'=>'btn btn-info']) !!}
+
+{!! Form::close() !!}
 
 
 @endsection
