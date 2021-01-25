@@ -5,14 +5,17 @@
 
 <h1>edit post</h1>
 
-<form method ="post" action="/posts/{{$post->id}}">
+{!! Form::model($post,['method'=>'PATCH', 'action'=>['PostsController@update', $post->id]]) !!}
 
     {{ csrf_field() }}
-    <input type="hidden" name="_method" value="PUT">
 
-    <input type="text" name="title" placeholder="enter title" value="{{$post->title}}">
-    <input type="submit" name="submit">
-</form>
+    {!! Form::label('title','Title') !!}
+{!! Form::text('title',null, ['class'=>'form-control']) !!}
+
+
+ 
+{!! Form::submit('Update Post', ['class'=>'btn btn-info']) !!}
+{!! Form::close() !!}
 
 <form method="post" action="/posts/{{$post->id}}">
 
