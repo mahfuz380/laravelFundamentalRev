@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePostRequest;
 use App\Post;
+
 
 class PostsController extends Controller
 {
@@ -37,14 +39,14 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         // return $request->all();
 
-        $validated = $request->validate([
-            'title' => 'required|unique:posts|max:255',
+        // $validated = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
             
-        ]);
+        // ]);
 
 
         Post::create($request->all());
