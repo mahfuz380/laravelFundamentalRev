@@ -41,6 +41,11 @@ class PostsController extends Controller
     {
         // return $request->all();
 
+        $validated = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            
+        ]);
+
 
         Post::create($request->all());
 
