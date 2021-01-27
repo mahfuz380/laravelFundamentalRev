@@ -358,6 +358,12 @@ Route::group(['middleware'=>'web'], function(){
         echo  Carbon::now()->subMonths(5)->diffForHumans();
 
     });
+
+    Route::get('/getname', function(){
+        $user = User::find(1);
+
+        echo $user->name;
+    });
     
 
 });
