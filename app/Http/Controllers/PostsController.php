@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostRequest;
 use App\Post;
+use Illuminate\Database\Eloquent\Scope;
 
 
 class PostsController extends Controller
@@ -18,7 +19,9 @@ class PostsController extends Controller
     {
         //
 
-        $posts = Post::all();
+
+
+        $posts = Post::latest()->get();
         return view('posts.index', compact('posts'));
     }
 
